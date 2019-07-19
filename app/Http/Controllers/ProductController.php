@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Product;
+use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
@@ -14,8 +14,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::paginate(10);
-        return view('admin.products.index')->with(compact('products')); //listado de productos
+        //
     }
 
     /**
@@ -25,7 +24,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('admin.products.create'); //formulario de registro
+        //
     }
 
     /**
@@ -36,31 +35,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //registrar nuevo Producto
-        // dd($request->all());
-        $messages = [
-            'name.required' => 'Es necesario Ingresar un nombre para el producto',
-            'name.min' => 'El nombre del producto debe tener al menos 3 caracteres',
-            'description.required' => 'Es necesario ingresar una descripcion',
-            'description.max' => 'No debe de exeder los 200 caracteres',
-            'price.min' => 'El precio debe ser igual o mayor a 0',
-            'price.required' => 'El campo Precio no debe estar vacio',
-            'price.numeric' => 'Solo se admiten valores de tipo numerico (1,2,3,etc)',
-        ];
-        $rules = [
-            'name' =>'required|min:3',
-            'description' =>'required|max:200',
-            'price' =>'required|numeric|min:0',
-        ];
-        $this->validate($request, $rules, $messages);
-        $product = new Product();
-        $product->name = $request->input('name');
-        $product->price = $request->input('price');
-        $product->description = $request->input('description');
-        $product->long_description = $request->input('long_description');
-        $product->save();
-
-        return redirect("/admin/products");
+        //
     }
 
     /**
@@ -71,7 +46,21 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //
+        $product = Product::find($id);
+        $images =$product->images;
+        $imagesLeft = collect();
+        $imagesRigth = collect();
+        foreach ($images as $key => $image) {
+            if ($key%2 == 0)
+            {
+                $imagesLeft->push($image);
+            }
+            else
+            {
+                $imagesRigth->push($image);
+            }
+        }
+        return view('products.show')->with(compact('product', 'imagesLeft', 'imagesRigth'));
     }
 
     /**
@@ -82,9 +71,7 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        // return $id;
-        $product = Product::find($id);
-        return view('admin.products.edit')->with(compact('product'));
+        //
     }
 
     /**
@@ -96,29 +83,7 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-               $messages = [
-            'name.required' => 'Es necesario Ingresar un nombre para el producto',
-            'name.min' => 'El nombre del producto debe tener al menos 3 caracteres',
-            'description.required' => 'Es necesario ingresar una descripcion',
-            'description.max' => 'No debe de exeder los 200 caracteres',
-            'price.min' => 'El precio debe ser igual o mayor a 0',
-            'price.required' => 'El campo Precio no debe estar vacio',
-            'price.numeric' => 'Solo se admiten valores de tipo numerico (1,2,3,etc)',
-        ];
-        $rules = [
-            'name' =>'required|min:3',
-            'description' =>'required|max:200',
-            'price' =>'required|numeric|min:0',
-        ];
-        $this->validate($request, $rules, $messages);
-        $product = Product::find($id);
-        $product->name = $request->input('name');
-        $product->price = $request->input('price');
-        $product->description = $request->input('description');
-        $product->long_description = $request->input('long_description');
-        $product->save(); //Update
-
-        return redirect("/admin/products");
+        //
     }
 
     /**
@@ -129,7 +94,6 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        Product::findOrFail($id)->delete();
-        return back();
+        //
     }
 }

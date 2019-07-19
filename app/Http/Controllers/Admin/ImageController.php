@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Product;
 use App\ProductImage;
+use Intervention\Image\Facades\Image;
 use File;
 use Illuminate\Http\Request;
 
@@ -42,8 +44,10 @@ class ImageController extends Controller
         $file = $request->file('photo');
         $path = public_path() . '/images/products';
         $fileName = uniqid() . $file->getClientOriginalName();
+        Image::make($request->file('photo'))
+        ->resize(250, 250)
+        ->save(public_path() . '/images/products/' . $fileName);
         $moved = $file->move($path, $fileName);
-
         if ($moved)
         {
         $productImage = new ProductImage;

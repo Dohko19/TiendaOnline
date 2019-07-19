@@ -3,7 +3,7 @@
 @section('body-class', 'profile-page')
 @section('content')
 
-<div class="page-header header-filter" data-parallax="true" style="background-image: url('{{ asset('img/profile_city.jpg') }}')">
+<div class="page-header header-filter" data-parallax="true" style="background-image: url('{{ asset('img/botw4.jpg') }}')">
 
   </div>
   <div class="main main-raised">
@@ -19,8 +19,8 @@
     <!--
         color-classes: "nav-pills-primary", "nav-pills-info", "nav-pills-success", "nav-pills-warning","nav-pills-danger"
     -->
-        <li class="nav-item">
-            <a class="nav-link" href="#dashboard-1" role="tab" data-toggle="tab">
+        <li class="active nav-item">
+            <a class="nav-link active" href="#dashboard-1" role="tab" data-toggle="tab">
                 <i class="material-icons">dashboard</i>
                 Carrito de Compras
             </a>
@@ -34,9 +34,46 @@
     </ul>
     <div class="tab-content tab-space">
         <div class="tab-pane active" id="dashboard-1">
-          Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate B2C users after installed base benefits.
-          <br><br>
-          Dramatically visualize customer directed convergence without revolutionary ROI.
+
+             <table class="table">
+                        <thead>
+                            <tr>
+                                <th class="text-center">#</th>
+                                <th class="text-center">Nombre</th>
+                                <th class="text-right">Precio</th>
+                                <th class="text-right">Opciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+            @foreach(auth()->user()->cart->details as $detail)
+                            <tr>
+                                <td class="text-center">
+                                    <img src="{{ $detail->product->featured_image_url }}" height="100">
+                                </td>
+                                <td>
+                                    <a href="{{ url('/products/'.$detail->product->id) }}">{{ $detail->product->name }}</a>
+                                </td>
+                                 <td class="text-right">&euro;{{ $detail->product->price }}</td>
+                                <td class="td-actions text-right">
+
+                                    <form method="POST" action="{{ url('/admin/products/'.$detail->product->id) }}">
+                                        @csrf
+                                        {{ method_field('DELETE') }}
+                                        <a href="{{ url('/products/'.$detail->product->id) }}" target="_blank" rel="tooltip" title="Ver Producto" class="btn btn-info btn-round btn-sm">
+                                        <i class="material-icons">visibility</i>
+                                        </a>
+                                        <button type="submit"
+                                        rel="tooltip"
+                                        title="Eliminar"
+                                        class="btn btn-danger btn-round btn-sm">
+                                            <i class="material-icons">close</i>
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+             @endforeach
         </div>
         <div class="tab-pane" id="tasks-1">
             Completely synergize resource taxing relationships via premier niche markets. Professionally cultivate one-to-one customer service with robust ideas.

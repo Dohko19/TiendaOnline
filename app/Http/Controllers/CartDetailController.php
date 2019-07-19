@@ -2,17 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Product;
+use App\CartDetail;
 use Illuminate\Http\Request;
 
-class TestController extends Controller
+class CartDetailController extends Controller
 {
-    public function welcome()
-    {
-        $products = Product::paginate(9);
-
-        return view('welcome')->with(compact('products'));
-    }
     /**
      * Display a listing of the resource.
      *
@@ -41,7 +35,12 @@ class TestController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $cartDetail = new CartDetail();
+        $cartDetail->cart_id = auth()->user()->cart->id;
+        $cartDetail->product_id = $request->product_id;
+        $cartDetail->quantity = $request->quantity;
+        $cartDetail->save();
+        return back();
     }
 
     /**

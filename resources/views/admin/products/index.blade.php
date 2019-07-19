@@ -3,7 +3,7 @@
 @section('body-class', 'profile-page')
 @section('content')
 
-<div class="page-header header-filter" data-parallax="true" style="background-image: url('{{ asset('img/profile_city.jpg') }}')">
+<div class="page-header header-filter" data-parallax="true" style="background-image: url('{{ asset('img/botw.jpg') }}')">
 
   </div>
   <div class="main main-raised">
@@ -66,8 +66,10 @@
                             </tr>
                             @endforeach
                         </tbody>
-                    </table>
+                </table>
+                    <div class="text-center">
                     {{ $products->links() }}
+                    </div>
             </div>
           </div>
         </div>

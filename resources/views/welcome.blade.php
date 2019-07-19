@@ -2,7 +2,7 @@
 @section('body-class', 'landing-page sidebar-collapse')
 @section('content')
 
-<div class="page-header header-filter" data-parallax="true" style="background-image: url('{{ asset('img/profile_city.jpg') }}')">
+<div class="page-header header-filter" data-parallax="true" style="background-image: url('{{ asset('img/botw2.jpg') }}')">
     <div class="container">
       <div class="row">
         <div class="col-md-6">
@@ -11,8 +11,8 @@
                 Tienda en linea donde encuentras lo que buscas.
           </h4>
           <br>
-          <video width="320" height="240" controls>
-             <source src="{{ asset('/media/RNMA-046.mp4') }}" type="video/mp4">
+          <video width="320" height="240" controls URL pixels>
+             <source src="{{ asset('/media/punchitoooo-12.mp4') }}" type="video/mp4">
             <i class="fa fa-play"></i> Watch video
           </video>
           <div></div>
@@ -74,27 +74,28 @@
           <div class="row">
             @foreach($products as $p)
             <div class="col-md-4">
-              <div class="team-player">
+              <div class="card team-player">
                 <div class="card card-plain">
                   <div class="col-md-6 ml-auto mr-auto">
                     <img src="{{ $p->featured_image_url  }}" alt="Thumbnail Image" class="img-raised rounded-circle img-fluid" width="250">
                   </div>
-                  <h4 class="card-title">{{ $p->name }}
+                  <h4 class="card-title">
+                    <a href="{{ url('/products/'.$p->id) }}">
+                    {{ $p->name }}
+                    </a>
                     <br>
                     <small class="card-description text-muted">{{ $p->category ? $p->category->name : 'General' }}</small>
                   </h4>
                   <div class="card-body">
                     <p class="card-description">{{ $p->description }}</p>
                   </div>
-                  <div class="card-footer justify-content-center">
-                    <a href="#" class="btn btn-link btn-just-icon"><i class="fa fa-twitter"></i></a>
-                    <a href="#" class="btn btn-link btn-just-icon"><i class="fa fa-instagram"></i></a>
-                    <a href="#" class="btn btn-link btn-just-icon"><i class="fa fa-facebook-square"></i></a>
-                  </div>
                 </div>
               </div>
             </div>
             @endforeach
+            </div>
+            <div class="row justify-content-center" >
+              {{ $products->links() }}
             </div>
           </div>
         </div>
