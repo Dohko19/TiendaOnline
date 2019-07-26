@@ -9,9 +9,9 @@
   <div class="main main-raised">
     <div class="container">
         <h2 class="title text-center">Dashboard</h2>
-         @if (session('status'))
+         @if (session('notification'))
             <div class="alert alert-success" role="alert">
-                {{ session('status') }}
+                {{ session('notification') }}
             </div>
          @endif
 
@@ -34,18 +34,21 @@
     </ul>
     <div class="tab-content tab-space">
         <div class="tab-pane active" id="dashboard-1">
-
+            <hr>
+            <p>Tu carrito de Compras Presenta <b>{{ auth()->user()->cart->details->count() }}</b> Producto</p>
              <table class="table">
                         <thead>
                             <tr>
                                 <th class="text-center">#</th>
-                                <th class="text-center">Nombre</th>
-                                <th class="text-right">Precio</th>
-                                <th class="text-right">Opciones</th>
+                                <th>Nombre</th>
+                                <th>Precio</th>
+                                <th>Cantidad</th>
+                                <th>Sub Total</th>
+                                <th>Opciones</th>
                             </tr>
                         </thead>
+                        @foreach(auth()->user()->cart->details as $detail)
                         <tbody>
-            @foreach(auth()->user()->cart->details as $detail)
                             <tr>
                                 <td class="text-center">
                                     <img src="{{ $detail->product->featured_image_url }}" height="100">
@@ -53,12 +56,14 @@
                                 <td>
                                     <a href="{{ url('/products/'.$detail->product->id) }}">{{ $detail->product->name }}</a>
                                 </td>
-                                 <td class="text-right">&euro;{{ $detail->product->price }}</td>
-                                <td class="td-actions text-right">
-
-                                    <form method="POST" action="{{ url('/admin/products/'.$detail->product->id) }}">
+                                 <td>$ {{ $detail->product->price }}</td>
+                                 <td>{{ $detail->quantity }}</td>
+                                 <td>$ {{ $detail->quantity * $detail->product->price }}</td>
+                                <td class="td-actions">
+                                    <form method="POST" action="{{ url('/cart/') }}">
                                         @csrf
                                         {{ method_field('DELETE') }}
+                                        <input type="hidden" name="cart_detail_id" value="{{ $detail->id }}">
                                         <a href="{{ url('/products/'.$detail->product->id) }}" target="_blank" rel="tooltip" title="Ver Producto" class="btn btn-info btn-round btn-sm">
                                         <i class="material-icons">visibility</i>
                                         </a>
@@ -72,8 +77,16 @@
                                 </td>
                             </tr>
                         </tbody>
+                        @endforeach
                     </table>
-             @endforeach
+                        <div class="text-center">
+                            <form method="POST" action="{{ url('/order') }}">
+                                @csrf
+                                <button class="btn btn-primary btn-round">
+                                    <i class="material-icons">done</i> Revisar Pedido
+                                </button>
+                            </form>
+                        </div>
         </div>
         <div class="tab-pane" id="tasks-1">
             Completely synergize resource taxing relationships via premier niche markets. Professionally cultivate one-to-one customer service with robust ideas.

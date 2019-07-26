@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\CartDetail;
 use Illuminate\Http\Request;
 
-class CartDetailController extends Controller
+class CartController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -35,13 +34,7 @@ class CartDetailController extends Controller
      */
     public function store(Request $request)
     {
-        $cartDetail = new CartDetail();
-        $cartDetail->cart_id = auth()->user()->cart->id;
-        $cartDetail->product_id = $request->product_id;
-        $cartDetail->quantity = $request->quantity;
-        $cartDetail->save();
-        $notification = 'El Producto se a cargado a tu carrito de compras exitosamente';
-        return back()->with(compact('notification'));
+        //
     }
 
     /**
@@ -73,9 +66,14 @@ class CartDetailController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update()
     {
-        //
+        $cart = auth()->user()->cart;
+        $cart->status = "Pending";
+        $cart->save();
+
+        $notification = 'Tu pedido se ha registrado correctamente. Te contactaremos pronto via email';
+        return back()->with(compact('notification'));
     }
 
     /**
@@ -84,15 +82,8 @@ class CartDetailController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request)
+    public function destroy($id)
     {
-        $cartDetail = CartDetail::find($request->cart_detail_id);
-        // dd($cartDetail)
-        if ($cartDetail->cart_id == auth()->user()->cart->id)
-        {
-        $cartDetail->delete();
-        }
-        $notification = 'El producto se a eliminado del carrito correctamente';
-        return back()->with(compact('notification'));
+        //
     }
 }
