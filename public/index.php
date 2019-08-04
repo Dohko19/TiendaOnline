@@ -22,6 +22,11 @@ define('LARAVEL_START', microtime(true));
 */
 
 require __DIR__.'/../vendor/autoload.php';
+// $app->bind('path.public', function() {
+
+//     return __DIR__;
+
+// });
 
 /*
 |--------------------------------------------------------------------------

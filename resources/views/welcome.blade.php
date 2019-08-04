@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('body-class', 'landing-page sidebar-collapse')
 @section('content')
-
+{{-- aljfxircfpnysksk --}}
 <div class="page-header header-filter" data-parallax="true" style="background-image: url('{{ asset('img/botw2.jpg') }}')">
     <div class="container">
       <div class="row">
@@ -84,7 +84,7 @@
                     {{ $p->name }}
                     </a>
                     <br>
-                    <small class="card-description text-muted">{{ $p->category ? $p->category->name : 'General' }}</small>
+                    <small class="card-description text-muted">{{$p->category_name}}</small>
                   </h4>
                   <div class="card-body">
                     <p class="card-description">{{ $p->description }}</p>

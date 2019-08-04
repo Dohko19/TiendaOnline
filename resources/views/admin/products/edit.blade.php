@@ -42,9 +42,7 @@
 
             <div class="form-group">
                     <label for="exampleFormControlTextarea1">Descripcion Extensa del Producto</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" name="long_description">
-                      {{ old('long_description',$product->long_description) }}
-                    </textarea>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" name="long_description"> {{ old('long_description',$product->long_description) }}</textarea>
              </div>
 
              <button type="submit" class="btn btn-primary">Guardar Cambios</button>

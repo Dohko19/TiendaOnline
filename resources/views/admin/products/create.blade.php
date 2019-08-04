@@ -21,7 +21,7 @@
         <h2 class="title text-center">Registrar Nuevo Productos</h2>
         <form method="POST" action="{{ url('/admin/products') }}">
             @csrf
-            <div class="row">
+        <div class="row">
             <div class="col-sm-6">
                  <div class="form-group label-floating">
                      <label class="control-label">Nombre del Producto</label>
@@ -35,10 +35,29 @@
             </div>
             </div>
          </div>
-            <div class="form-group label-floating">
-                    <label class="control-label">Descripcion Corta</label>
-                    <input type="text" value="{{ old('description') }}" name="description" class="form-control" />
+
+         <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group label-floating">
+                        <label class="control-label">Descripcion Corta</label>
+                        <input type="text" value="{{ old('description') }}" name="description" class="form-control" />
+                </div>
             </div>
+            <div class="col-sm-6">
+            <div class="form-group label-floating">
+                    <label class="control-label">Categoria del Producto</label>
+                    <select class="form-control" name="category_id">
+                        <option value="0">General</option>
+                        @foreach ($categories as $category)
+                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                        @endforeach
+                    </select>
+            </div>
+            </div>
+         </div>
+
+
+
 
             <div class="form-group">
                     <label for="exampleFormControlTextarea1">Descripcion Extensa del Producto</label>

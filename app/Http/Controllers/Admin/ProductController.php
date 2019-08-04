@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Category;
 use App\Http\Controllers\Controller;
 use App\Product;
 use Illuminate\Http\Request;
@@ -26,7 +27,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('admin.products.create'); //formulario de registro
+        $categories = Category::orderBy('name')->get();
+        return view('admin.products.create')->with(compact('categories')); //formulario de registro
     }
 
     /**
@@ -59,6 +61,7 @@ class ProductController extends Controller
         $product->price = $request->input('price');
         $product->description = $request->input('description');
         $product->long_description = $request->input('long_description');
+        $product->category_id = $request->category_id == 0 ? null : $request->category_id;;
         $product->save();
 
         return redirect("/admin/products");

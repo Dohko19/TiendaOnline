@@ -1,6 +1,6 @@
 @extends('layouts.app')
-@section('title', 'Listado de Productos')
-@section('body-class', 'profile-page')
+@section('title', 'Producto Nuevo')
+@section('body-class', 'profile-page sidebar-collapse')
 @section('content')
 
 <div class="page-header header-filter" data-parallax="true" style="background-image: url('{{ asset('img/botw.jpg') }}')">
@@ -8,73 +8,38 @@
   </div>
   <div class="main main-raised">
     <div class="container">
-        @if( $errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
+            @if( $errors->any())
+              <div class="alert alert-danger">
+                  <ul>
+                      @foreach($errors->all() as $error)
+                      <li>{{ $error }}</li>
+                      @endforeach
+                  </ul>
+              </div>
             @endif
-      <div class="section text-center">
-        <h2 class="title">Listado de Productos Disponibles</h2>
-        <div class="team">
-                <a href="{{ url('/admin/products/create') }}" class="btn btn-primary btn-round">Nuevo Producto</a>
-          <div class="row">
-                <table class="table">
-                        <thead>
-                            <tr>
-                                <th class="text-center">#</th>
-                                <th class="text-center">Nombre</th>
-                                <th class="text-center">Descripción</th>
-                                <th class="text-center">Categoría</th>
-                                <th class="text-right">Precio</th>
-                                <th class="text-right">Opciones</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($products as $p)
-                            <tr>
-                                <td class="text-center">{{ $p->id }}</td>
-                                <td>{{ $p->name }}</td>
-                                <td>{{ $p->description }}</td>
-                                <td>{{ $p->category_name }}</td>
-                                 <td class="text-right">$ {{ $p->price }}</td>
-                                <td class="td-actions text-right">
-
-                                    <form method="POST" action="{{ url('/admin/products/'.$p->id) }}">
-                                        @csrf
-                                        {{ method_field('DELETE') }}
-                                        <a href="#" rel="tooltip" title="Ver Producto" class="btn btn-info btn-round btn-sm">
-                                        <i class="material-icons">visibility</i>
-                                        </a>
-                                        <a href="{{ url('/admin/products/'.$p->id.'/edit') }}" rel="tooltip" title="Editar Producto" class="btn btn-success btn-round btn-sm">
-                                            <i class="material-icons">edit</i>
-                                        </a>
-                                        <a href="{{ url('/admin/products/'.$p->id.'/images') }}" rel="tooltip" title="Imagenes Del Producto" class="btn btn-warning btn-round btn-sm">
-                                        <i class="material-icons">image</i>
-                                        </a>
-                                        <button type="submit"
-                                        rel="tooltip"
-                                        title="Eliminar"
-                                        class="btn btn-danger btn-round btn-sm">
-                                            <i class="material-icons">close</i>
-                                        </button>
-                                    </form>
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                </table>
-                    <div class="text-center">
-                    {{ $products->links() }}
-                    </div>
+      <div class="section ">
+        <h2 class="title text-center">Registrar Nueva Categoria</h2>
+        <form method="POST" action="{{ url('/admin/categories') }}">
+            @csrf
+            <div class="row">
+            <div class="col-sm-6">
+                 <div class="form-group label-floating">
+                     <label class="control-label">Nombre de la Categoria</label>
+                     <input type="text" value="{{ old('name') }}" name="name" class="form-control" />
+                 </div>
             </div>
-          </div>
-        </div>
-      </div>
+         </div>
+            <div class="form-group">
+                    <label for="exampleFormControlTextarea1">Descripcion de la Categoria</label>
+                    <textarea placeholder="Descripcion de la Categoria" class="form-control" id="exampleFormControlTextarea1" rows="5" name="description">{{ old('description') }}
+                    </textarea>
+             </div>
 
+             <button type="submit" class="btn btn-primary">Registrar Categoría</button>
+             <a href="{{ url('/admin/categories') }}" class="btn btn-danger">Cancelar</a>
+
+        </form>
+      </div>
 
     </div>
   </div>

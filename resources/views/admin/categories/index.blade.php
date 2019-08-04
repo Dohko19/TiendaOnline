@@ -18,42 +18,35 @@
             </div>
             @endif
       <div class="section text-center">
-        <h2 class="title">Listado de Productos Disponibles</h2>
+        <h2 class="title">Listado de Categorias</h2>
         <div class="team">
-                <a href="{{ url('/admin/products/create') }}" class="btn btn-primary btn-round">Nuevo Producto</a>
+                <a href="{{ url('/admin/categories/create') }}" class="btn btn-primary btn-round">Nueva Categoria</a>
           <div class="row">
                 <table class="table">
                         <thead>
                             <tr>
-                                <th class="text-center">#</th>
+                                {{-- <th class="text-center">#</th> --}}
                                 <th class="text-center">Nombre</th>
                                 <th class="text-center">Descripción</th>
-                                <th class="text-center">Categoría</th>
-                                <th class="text-right">Precio</th>
                                 <th class="text-right">Opciones</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($products as $p)
+                            @foreach ($categories as $key => $category)
                             <tr>
-                                <td class="text-center">{{ $p->id }}</td>
-                                <td>{{ $p->name }}</td>
-                                <td>{{ $p->description }}</td>
-                                <td>{{ $p->category_name }}</td>
-                                 <td class="text-right">$ {{ $p->price }}</td>
+                                {{-- <td class="text-center">{{ ($key+1) }}</td> --}}
+                                <td>{{ $category->name }}</td>
+                                <td>{{ $category->description }}</td>
                                 <td class="td-actions text-right">
 
-                                    <form method="POST" action="{{ url('/admin/products/'.$p->id) }}">
+                                    <form method="POST" action="{{ url('/admin/categories/'.$category->id) }}">
                                         @csrf
                                         {{ method_field('DELETE') }}
-                                        <a href="#" rel="tooltip" title="Ver Producto" class="btn btn-info btn-round btn-sm">
+                                        <a href="#" rel="tooltip" title="Ver Categoria" class="btn btn-info btn-round btn-sm">
                                         <i class="material-icons">visibility</i>
                                         </a>
-                                        <a href="{{ url('/admin/products/'.$p->id.'/edit') }}" rel="tooltip" title="Editar Producto" class="btn btn-success btn-round btn-sm">
+                                        <a href="{{ url('/admin/categories/'.$category->id.'/edit') }}" rel="tooltip" title="Editar Categoria" class="btn btn-success btn-round btn-sm">
                                             <i class="material-icons">edit</i>
-                                        </a>
-                                        <a href="{{ url('/admin/products/'.$p->id.'/images') }}" rel="tooltip" title="Imagenes Del Producto" class="btn btn-warning btn-round btn-sm">
-                                        <i class="material-icons">image</i>
                                         </a>
                                         <button type="submit"
                                         rel="tooltip"
@@ -68,7 +61,7 @@
                         </tbody>
                 </table>
                     <div class="text-center">
-                    {{ $products->links() }}
+                    {{ $categories->links() }}
                     </div>
             </div>
           </div>

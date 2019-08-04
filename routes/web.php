@@ -32,4 +32,10 @@ Route::post('/products/{id}/images', 'ImageController@store');
 Route::delete('/products/{id}/images', 'ImageController@destroy');
 Route::get('/products/{id}/images/select/{image}', 'ImageController@select'); //destacar imagen
 
+Route::get('/categories', 'CategoryController@index'); //listado
+Route::get('/categories/create', 'CategoryController@create'); //crear
+Route::post('/categories', 'CategoryController@store'); //registrar
+Route::get('/categories/{category}/edit', 'CategoryController@edit'); //EDITAR
+Route::post('/categories/{category}/edit', 'CategoryController@update'); //actualizar
+Route::delete('/categories/{category}', 'CategoryController@destroy');
 });
