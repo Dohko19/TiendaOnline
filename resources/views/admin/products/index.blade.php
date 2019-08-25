@@ -46,7 +46,7 @@
                                     <form method="POST" action="{{ url('/admin/products/'.$p->id) }}">
                                         @csrf
                                         {{ method_field('DELETE') }}
-                                        <a href="#" rel="tooltip" title="Ver Producto" class="btn btn-info btn-round btn-sm">
+                                        <a href="{{ url('/products/'.$p->id) }}" rel="tooltip" title="Ver Producto" class="btn btn-info btn-round btn-sm" target="_blank">
                                         <i class="material-icons">visibility</i>
                                         </a>
                                         <a href="{{ url('/admin/products/'.$p->id.'/edit') }}" rel="tooltip" title="Editar Producto" class="btn btn-success btn-round btn-sm">

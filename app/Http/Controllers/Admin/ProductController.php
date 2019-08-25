@@ -61,7 +61,7 @@ class ProductController extends Controller
         $product->price = $request->input('price');
         $product->description = $request->input('description');
         $product->long_description = $request->input('long_description');
-        $product->category_id = $request->category_id == 0 ? null : $request->category_id;;
+        $product->category_id = $request->category_id == 0 ? null : $request->category_id;
         $product->save();
 
         return redirect("/admin/products");
@@ -86,9 +86,9 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        // return $id;
+        $categories = Category::orderBy('name')->get();
         $product = Product::find($id);
-        return view('admin.products.edit')->with(compact('product'));
+        return view('admin.products.edit')->with(compact('product', 'categories'));
     }
 
     /**
@@ -120,6 +120,7 @@ class ProductController extends Controller
         $product->price = $request->input('price');
         $product->description = $request->input('description');
         $product->long_description = $request->input('long_description');
+        $product->category_id = $request->category_id == 0 ? null : $request->category_id;
         $product->save(); //Update
 
         return redirect("/admin/products");

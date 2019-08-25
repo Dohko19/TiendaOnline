@@ -3,17 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Category;
-use App\Product;
 use Illuminate\Http\Request;
 
-class TestController extends Controller
+class CategoryController extends Controller
 {
-    public function welcome()
-    {
-        $categories = Category::get();
-
-        return view('welcome')->with(compact('categories'));
-    }
     /**
      * Display a listing of the resource.
      *
@@ -51,9 +44,10 @@ class TestController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Category $category)
     {
-        //
+        $products = $category->products()->paginate(10);
+        return view('categories.show')->with(compact('category', 'products'));
     }
 
     /**

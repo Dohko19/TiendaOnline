@@ -72,30 +72,25 @@
         <h2 class="title">Productos Disponibles</h2>
         <div class="team">
           <div class="row">
-            @foreach($products as $p)
+            @foreach($categories as $category)
             <div class="col-md-4">
               <div class="card team-player">
                 <div class="card card-plain">
                   <div class="col-md-6 ml-auto mr-auto">
-                    <img src="{{ $p->featured_image_url  }}" alt="Thumbnail Image" class="img-raised rounded-circle img-fluid" width="250">
+                    <img src="{{ $category->featured_image_url  }}" alt="Imagen representativa de la categoria  " class="img-raised rounded-circle img-fluid" width="250">
                   </div>
                   <h4 class="card-title">
-                    <a href="{{ url('/products/'.$p->id) }}">
-                    {{ $p->name }}
+                    <a href="{{ url('/categories/'.$category->id) }}">
+                    {{ $category->name }}
                     </a>
-                    <br>
-                    <small class="card-description text-muted">{{$p->category_name}}</small>
                   </h4>
                   <div class="card-body">
-                    <p class="card-description">{{ $p->description }}</p>
+                    <p class="card-description">{{ $category->description }}</p>
                   </div>
                 </div>
               </div>
             </div>
             @endforeach
-            </div>
-            <div class="row justify-content-center" >
-              {{ $products->links() }}
             </div>
           </div>
         </div>

@@ -35,10 +35,30 @@
             </div>
             </div>
          </div>
+
+            <div class="row">
+            <div class="col-sm-6">
             <div class="form-group label-floating">
                     <label class="control-label">Descripcion Corta</label>
                     <input type="text" value="{{ old('description',$product->description) }}" name="description" class="form-control" />
             </div>
+            </div>
+            <div class="col-sm-6">
+            <div class="form-group label-floating">
+                    <label class="control-label">Categoria del Producto</label>
+                    <select class="form-control" name="category_id">
+                        <option value="0">General</option>
+                        @foreach ($categories as $category)
+                            <option value="{{ $category->id }}" @if ($category->id == old('category_id', $product->category_id))
+                              selected
+                            @endif>
+                              {{ $category->name }}</option>
+                        @endforeach
+                    </select>
+            </div>
+            </div>
+         </div>
+
 
             <div class="form-group">
                     <label for="exampleFormControlTextarea1">Descripcion Extensa del Producto</label>
