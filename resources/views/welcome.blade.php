@@ -1,4 +1,47 @@
 @extends('layouts.app')
+@section('styles')
+  <style>
+.tt-query {
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+
+.tt-hint {
+  color: #999
+}
+
+.tt-menu {    /* used to be tt-dropdown-menu in older versions */
+  width: 200px;
+  margin-top: 4px;
+  padding: 4px 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
+  -webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+     -moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+          box-shadow: 0 5px 10px rgba(0,0,0,.2);
+}
+
+.tt-suggestion {
+  padding: 3px 20px;
+  line-height: 24px;
+}
+
+.tt-suggestion.tt-cursor,.tt-suggestion:hover {
+  color: #fff;
+  background-color: #0097cf;
+
+}
+
+.tt-suggestion p {
+  margin: 0;
+}
+  </style>
+@endsection
 @section('body-class', 'landing-page sidebar-collapse')
 @section('content')
 {{-- aljfxircfpnysksk --}}
@@ -69,7 +112,15 @@
         </div>
       </div>
       <div class="section text-center">
-        <h2 class="title">Productos Disponibles</h2>
+        <h2 class="title">Visita Nuestras Categorias</h2>
+        <center>
+        <form action="{{ url('/search') }}" class="form-inline align-content-center" method="GET">
+          <input type="text" class="form-control typeahead" placeholder="¿Que Producto Buscas?" name="query" id="search">
+          <button type="submit" class="btn btn-primary btn-just-icon">
+            <i class="material-icons">search</i>
+          </button>
+        </form>
+        </center>
         <div class="team">
           <div class="row">
             @foreach($categories as $category)
@@ -136,6 +187,28 @@
     </div>
   </div>
 @include('includes.footer')
+@endsection
+@section('scripts')
+  <script src="{{ asset('js/typeahead.bundle.min.js') }}"></script>
+  <script>
+        $(function () {
+          //type head sobre input de busqueda
+          var products = new Bloodhound({
+          queryTokenizer: Bloodhound.tokenizers.whitespace,
+          datumTokenizer: Bloodhound.tokenizers.whitespace,
+          prefetch: '{{ url("/products/json") }}'
+        });
+
+          $('#search').typeahead({
+            hint: true,
+            highlight: true,
+            minlenght: 1
+          }, {
+            name: 'products',
+            source: products
+          });
+        });
+  </script>
 @endsection
 {{-- <div class="container">
     <div class="row justify-content-center">

@@ -2,23 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Category;
 use App\Product;
 use Illuminate\Http\Request;
 
-class TestController extends Controller
+class SearchController extends Controller
 {
-    public function welcome()
-    {
-        $categories = Category::has('products')->get();
-
-        return view('welcome')->with(compact('categories'));
-    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+    public function data()
+    {
+        $products = Product::pluck('name');
+        return $products;
+    }
     public function index()
     {
         //
@@ -51,9 +49,15 @@ class TestController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request)
     {
-        //
+        $query = $request->input('query');
+        $products = Product::where('name', 'like', "%$query%")->paginate(5);
+        if ($products->count() == 1) {
+            $id = $products->first()->id;
+            return redirect("products/$id"); // es igual a '/products/'.$id
+        }
+        return view('search.show')->with(compact('products', 'query'));
     }
 
     /**

@@ -19,7 +19,7 @@
   <!-- CSS Just for demo purpose, don't include it in your project -->
   {{-- <link href="../assets/demo/demo.css" rel="stylesheet" /> --}}
   <link href="{{ asset('css/demo.css') }}" rel="stylesheet" />
-
+  @yield('styles')
 
 </head>
 
@@ -116,6 +116,7 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBNV43SO3jpT443KSpTkH1kY1IkEqSpxYE"></script>
   <!-- Control Center for Material Kit: parallax effects, scripts for the example pages etc -->
   <script src="{{ asset('js/material-kit.js?v=2.0.5') }}" type="text/javascript"></script>
+  @yield('scripts')
 </body>
 
 </html>
