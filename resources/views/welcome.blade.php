@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', config('app.name'))
 @section('styles')
   <style>
 .tt-query {
@@ -49,13 +50,13 @@
     <div class="container">
       <div class="row">
         <div class="col-md-6">
-          {{--  <h1 class="title">Bienvenido a App Shop.</h1>  --}}
+          {<h1 class="title">Bienvenido a {{ config('app.name') }}.</h1>
           <h4>
                 Tienda en linea donde encuentras lo que buscas.
           </h4>
           <br>
-          <video width="320" height="240" controls URL pixels>
-             <source src="{{ asset('/media/punchitoooo-12.mp4') }}" type="video/mp4">
+          <video width="600" height="400" controls URL pixels>
+             <source src="{{ asset('/media/Kyoukai no Kanata 1 Sub Español Online gratis.mp4') }}" type="video/mp4">
             <i class="fa fa-play"></i> Watch video
           </video>
           <div></div>
@@ -210,6 +211,7 @@
         });
   </script>
 @endsection
+
 {{-- <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
