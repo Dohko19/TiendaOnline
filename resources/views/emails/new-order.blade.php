@@ -88,6 +88,16 @@ html { -webkit-text-size-adjust: none; -ms-text-size-adjust: none;}
                               			{{ $cart->order_date }}
                               		</li>
                               	</ul>
+                                 <hr>
+                                 <p>Detalles del pedido</p>
+                                 <ul>
+                                       @foreach($cart->details as $detail)
+                                    <li>
+                                          {{ $detail->product->name }} x {{ $detail->quantity }} ($ {{ $detail->quantity * $detail->product->price }})
+                                    </li>
+                                    @endforeach
+                                 </ul>
+                                 <p><strong> Importe a Pagar : </strong> {{ $cart->total }}</p>
                               </span>
                            </font>
                            <div style="height: 33px; line-height: 33px; font-size: 31px;">&nbsp;</div>
