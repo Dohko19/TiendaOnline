@@ -19,7 +19,7 @@
             @endif
       <div class="section ">
         <h2 class="title text-center">Registrar Nueva Categoria</h2>
-        <form method="POST" action="{{ url('/admin/categories') }}">
+        <form method="POST" action="{{ url('/admin/categories') }}" enctype="multipart/form-data">
             @csrf
             <div class="row">
             <div class="col-sm-6">
@@ -27,6 +27,12 @@
                      <label class="control-label">Nombre de la Categoria</label>
                      <input type="text" value="{{ old('name') }}" name="name" class="form-control" />
                  </div>
+            </div>
+            <div class="col-sm-6">
+
+                     <label class="control-label">Imagen de la Categoria</label>
+                     <input type="file" name="image" />
+
             </div>
          </div>
             <div class="form-group">

@@ -16,6 +16,9 @@ class UsersTableSeeder extends Seeder
            'name'  => 'Link',
            'email' => 'link@zelda.com',
            'password' => bcrypt('123123'),
+           'phone' => '5555555',
+           'username' => 'Admin',
+           'address' => 'Madrid 222',
            'admin' => true,
         ]);
     }

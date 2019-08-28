@@ -19,7 +19,7 @@
             @endif
       <div class="section ">
         <h2 class="title text-center">Editar Categoria</h2>
-        <form method="POST" action="{{ url('/admin/categories/'.$category->id.'/edit') }}">
+        <form method="POST" action="{{ url('/admin/categories/'.$category->id.'/edit') }}" enctype="multipart/form-data">
             @csrf
             <div class="row">
             <div class="col-sm-6">
@@ -27,6 +27,14 @@
                      <label class="control-label">Nombre de la Categoria</label>
                      <input type="text" value="{{ old('name',$category->name) }}" name="name" class="form-control" />
                  </div>
+            </div>
+            <div class="col-sm-6">
+                     <label class="control-label">Imagen de la Categoria</label>
+                     <input type="file" name="image"/>
+                     @if($category->image)
+                     <p class="help-block">Subir solo si desea reemplazar la
+                      <a href="{{ asset('/images/categories/'.$category->image) }}" target="_blank">imagen actual</a></p>
+                    @endif
             </div>
          </div>
             <div class="form-group">
