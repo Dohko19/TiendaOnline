@@ -100,7 +100,7 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-               $messages = [
+            $messages = [
             'name.required' => 'Es necesario Ingresar un nombre para el producto',
             'name.min' => 'El nombre del producto debe tener al menos 3 caracteres',
             'description.required' => 'Es necesario ingresar una descripcion',
