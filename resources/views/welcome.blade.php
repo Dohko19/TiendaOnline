@@ -55,11 +55,13 @@
                 Tienda en linea donde encuentras lo que buscas.
           </h4>
           <br>
-          <video width="600" height="400" controls URL pixels>
+         <!-- <video width="600" height="400" controls URL pixels>
              <source src="{{ asset('/media/Kyoukai no Kanata 1 Sub Español Online gratis.mp4') }}" type="video/mp4">
             <i class="fa fa-play"></i> Watch video
-          </video>
-          <div></div>
+          </video>-->
+          <iframe src="https://player.twitch.tv/?channel=mym_alkapone" frameborder="0" allowfullscreen="true" scrolling="no" height="378" width="620"></iframe>
+          <div>
+          </div>
         </div>
       </div>
     </div>
