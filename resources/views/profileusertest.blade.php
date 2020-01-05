@@ -1,4 +1,3 @@
-
 @extends('layouts.profileuser')
 @section('section')
 

@@ -35,7 +35,6 @@
             </div>
             </div>
          </div>
-
             <div class="row">
             <div class="col-sm-6">
             <div class="form-group label-floating">
@@ -58,8 +57,6 @@
             </div>
             </div>
          </div>
-
-
             <div class="form-group">
                     <label for="exampleFormControlTextarea1">Descripcion Extensa del Producto</label>
                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" name="long_description"> {{ old('long_description',$product->long_description) }}</textarea>
