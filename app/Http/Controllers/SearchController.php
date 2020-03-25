@@ -17,6 +17,7 @@ class SearchController extends Controller
         $products = Product::pluck('name');
         return $products;
     }
+
     public function index()
     {
         //

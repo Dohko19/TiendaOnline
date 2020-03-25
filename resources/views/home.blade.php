@@ -3,9 +3,7 @@
 @section('body-class', 'profile-page')
 @section('content')
 
-<div class="page-header header-filter" data-parallax="true" style="background-image: url('{{ asset('img/botw4.jpg') }}')">
-
-  </div>
+<div class="page-header header-filter" data-parallax="true" style="background-image: url('{{ asset('img/botw4.jpg') }}')"> </div>
   <div class="main main-raised">
     <div class="container">
         <h2 class="title text-center">Dashboard</h2>
