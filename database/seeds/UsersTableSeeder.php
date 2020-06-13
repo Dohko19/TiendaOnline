@@ -15,7 +15,7 @@ class UsersTableSeeder extends Seeder
         User::create([
            'name'  => 'Link',
            'email' => 'link@zelda.com',
-           'password' => bcrypt('123123'),
+           'password' => '123123',
            'phone' => '5555555',
            'username' => 'Admin',
            'address' => 'Madrid 222',

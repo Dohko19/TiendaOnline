@@ -87,6 +87,12 @@ html { -webkit-text-size-adjust: none; -ms-text-size-adjust: none;}
                               			<strong>Fecha de Peidido:</strong>
                               			{{ $cart->order_date }}
                               		</li>
+                              		<li>
+                              			<strong>Fecha de Peidido:</strong>
+                              			{{ $user->address }}
+                                        <b>Telefono de Contacto:</b>
+                              			{{ $user->phone }}
+                              		</li>
                               	</ul>
                                  <hr>
                                  <p>Detalles del pedido</p>

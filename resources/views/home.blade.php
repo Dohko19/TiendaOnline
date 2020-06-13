@@ -82,14 +82,52 @@
                             <form method="POST" action="{{ url('/order') }}">
                                 @csrf
                                 <button class="btn btn-primary btn-round">
-                                    <i class="material-icons">done</i> Revisar Pedido
+                                    <i class="material-icons">done</i> Realizar Pedido
                                 </button>
                             </form>
                         </div>
         </div>
         <div class="tab-pane" id="tasks-1">
-            Completely synergize resource taxing relationships via premier niche markets. Professionally cultivate one-to-one customer service with robust ideas.
-            <br><br>Dynamically innovate resource-leveling customer service for state of the art customer service.
+            <h2>Mis Pedidos Realizados</h2>
+
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th class="text-center">#</th>
+                        <th>Ordenado el:</th>
+                        <th>Status</th>
+                        <th>Imagen del Producto</th>
+                        <th>Nombre</th>
+                        <th>Precio</th>
+                        <th>Cantidad</th>
+                        <th>Sub Total</th>
+                    </tr>
+                    </thead>
+                    @foreach(auth()->user()->carts as $cart)
+                        @foreach ($cart->details as $detail)
+                        <tbody>
+                        <tr>
+                            <td class="text-center">
+                                {{ $cart->id }}
+                            </td>
+                            <td>
+                                {{ $cart->order_date }}
+                            </td>
+                            <td>{{ $cart->status }}</td>
+                            <td class="text-center">
+                                <img src="{{ $detail->product->featured_image_url }}" height="100">
+                            </td>
+                            <td>
+                                <a href="{{ url('/products/'.$detail->product->id) }}">{{ $detail->product->name }}</a>
+                            </td>
+                            <td>$ {{ $detail->product->price }}</td>
+                            <td>{{ $detail->quantity }}</td>
+                            <td>$ {{ $detail->quantity * $detail->product->price }}</td>
+                        </tr>
+                        </tbody>
+                    @endforeach
+                    @endforeach
+                </table>
         </div>
     </div>
       </div>

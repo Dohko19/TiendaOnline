@@ -19,17 +19,6 @@
                  @csrf
               <div class="card-header card-header-primary text-center">
                 <h4 class="card-title">Registro</h4>
-               {{--  <div class="social-line">
-                  <a href="#pablo" class="btn btn-just-icon btn-link">
-                    <i class="fa fa-facebook-square"></i>
-                  </a>
-                  <a href="#pablo" class="btn btn-just-icon btn-link">
-                    <i class="fa fa-twitter"></i>
-                  </a>
-                  <a href="#pablo" class="btn btn-just-icon btn-link">
-                    <i class="fa fa-google-plus"></i>
-                  </a>
-                </div> --}}
               </div>
               <p class="description text-center">Completa tus datos</p>
               <div class="card-body">
@@ -131,25 +120,14 @@
                 </div>
                 </div>
                 <br>
-
-              {{-- <div class="footer text-center"> --}}
-                <center>
                      <button type="submit" class="btn btn-primary btn-link btn-wd btn-lg">Confirmar Registro</button>
-                </center>
-              {{-- </div> --}}
-          </div>
-           {{--     @if (Route::has('password.request'))
-                <a class="btn btn-link" href="{{ route('password.request') }}">
-                    {{ __('Forgot Your Password?') }}
-                </a>
-               @endif --}}
             </form>
           </div>
         </div>
       </div>
     </div>
 @include('includes.footer')
-  </div>
 @endsection
+</div>
 
 
