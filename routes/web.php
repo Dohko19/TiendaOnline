@@ -1,10 +1,6 @@
 <?php
 
 Route::get('/', 'TestController@welcome');
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
 Auth::routes();
 
 Route::get('/search', 'SearchController@show');
@@ -19,9 +15,6 @@ Route::delete('/cart', 'CartDetailController@destroy');
 
 Route::post('/order', 'CartController@update');
 
-Route::get('/userprof', function(){
-    return view('profileusertest');
-});
 
 Route::middleware(['auth','admin'])->prefix('admin')->namespace('Admin')->group(function(){
 Route::get('/products', 'ProductController@index'); //listado
