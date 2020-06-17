@@ -45,7 +45,7 @@
 @endsection
 @section('body-class', 'landing-page sidebar-collapse')
 @section('content')
-<div class="page-header header-filter" data-parallax="true" style="background-image: url('{{ asset('img/botw2.jpg') }}')">
+<div class="page-header header-filter" data-parallax="true" style="background-image: url('{{ asset('img/Pinata01.jpg') }}')">
     <div class="container">
       <div class="row">
         <div class="col-md-6">
@@ -54,10 +54,10 @@
                 Tienda en linea donde encuentras lo que buscas.
           </h4>
           <br>
-          <video width="600" height="400" controls URL pixels>
+          <!--<video width="600" height="400" controls URL pixels>
              <source src="{{ asset('/media/Kyoukai no Kanata 1 Sub Español Online gratis.mp4') }}" type="video/mp4">
             <i class="fa fa-play"></i> Watch video
-          </video>
+          </video>-->
 {{--          <iframe src="https://player.twitch.tv/?channel=mym_alkapone" frameborder="0" allowfullscreen="true" scrolling="no" height="378" width="620"></iframe>--}}
           <div>
           </div>

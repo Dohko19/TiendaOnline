@@ -89,7 +89,7 @@ class CategoryController extends Controller
      */
     public function update(Request $request,Category $category)
     {
-
+  
         $this->validate($request, Category::$rules, Category::$messages);
         $category->update($request->only('name', 'description'));
         if($request->hasfile('image'))
