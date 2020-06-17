@@ -33,14 +33,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="044a06e4-eace-4f4c-8836-c31ecf42d2aa" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/TiendaOnline.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/TiendaOnline.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/CategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/CategoryController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
   </component>
@@ -155,6 +161,12 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="yarn" />
   </component>
+  <component name="RunManager">
+    <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner scope="XML" />
+      <method v="2" />
+    </configuration>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -166,6 +178,7 @@
       <option name="presentableId" value="Default" />
       <updated>1592058848431</updated>
       <workItem from="1592058862569" duration="5972000" />
+      <workItem from="1592423780390" duration="1249000" />
     </task>
     <servers />
   </component>
@@ -182,12 +195,29 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="493" y="255" key="#Composer" timestamp="1592058888358">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="493" y="255" key="#Composer/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1592058888358" />
+    <state width="1495" height="204" key="GridCell.Tab.0.bottom" timestamp="1592424009178">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1495" height="204" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1592424009178" />
+    <state width="1495" height="204" key="GridCell.Tab.0.center" timestamp="1592424009177">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1495" height="204" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1592424009177" />
+    <state width="1495" height="204" key="GridCell.Tab.0.left" timestamp="1592424009177">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1495" height="204" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1592424009177" />
+    <state width="1495" height="204" key="GridCell.Tab.0.right" timestamp="1592424009177">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1495" height="204" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1592424009177" />
     <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1592060502905">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

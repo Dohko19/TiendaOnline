@@ -126,6 +126,7 @@
         <div class="team">
           <div class="row">
             @foreach($categories as $category)
+            {{ $category }}
             <div class="col-md-4">
               <div class="card team-player">
                 <div class="card card-plain">
